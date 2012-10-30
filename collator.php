@@ -24,6 +24,7 @@
 				y -= leftCanvas.offsetTop;
 
 				var ctx = leftCanvas.getContext("2d");
+				ctx.save();
 				ctx.moveTo(x - 5, y);
 				ctx.lineTo(x + 5, y);
 				ctx.stroke();
@@ -51,6 +52,7 @@
 				y -= rightCanvas.offsetTop;
 
 				var ctx = rightCanvas.getContext("2d");
+				ctx.save();
 				ctx.moveTo(x - 5, y);
 				ctx.lineTo(x + 5, y);
 				ctx.stroke();
@@ -60,11 +62,26 @@
 			}
 		}
 
+		function keydown(event) {
+			var keyCode = ('which' in event) ? event.which : event.keyCode;
+			if (keyCode == 8) {
+				var rightCanvas = document.getElementById("rightCanvas");
+				var rCtx = rightCanvas.getContext("2d");
+				rCtx.restore();
+
+				var leftCanvas = document.getElementById("leftCanvas");
+				var lCtx = leftCanvas.getContext("2d");
+				lCtx.restore();
+			}
+		}
+
 		window.onload = function() {
 			var leftCanvas = document.getElementById("leftCanvas");
 			var rightCanvas = document.getElementById("rightCanvas");
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
 			rightCanvas.addEventListener("click", rightCanvasClick, false);
+
+			document.addEventListener("keydown", keydown, false);
 
 			var leftCtx = leftCanvas.getContext("2d");
 			var rightCtx = rightCanvas.getContext("2d");
