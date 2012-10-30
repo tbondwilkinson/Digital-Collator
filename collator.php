@@ -71,10 +71,14 @@
 
 			var leftImg = new Image();
 			leftImg.src = "../SC179_BoD_1/SC179_Bod_1_A1.jpg";
+			leftImg.width = 500;
+			leftImg.height = 500;
 			leftCtx.drawImage(leftImg, 0, 0);
 
 			var rightImg = new Image();
 			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
+			rightImg.width = 500;
+			rightImg.height = 500;
 			rightCtx.drawImage(rightImg, 0, 0);
 
 		}
