@@ -70,8 +70,7 @@
 
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
-		alert(keyCode);
-		if (keyCode === 65) {
+		if (keyCode === 85) {
 			// If we have some restore points
 			if (leftRestorePoints.length > 0) {
 				// Create a new Image object
