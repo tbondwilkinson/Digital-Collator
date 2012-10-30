@@ -8,16 +8,13 @@
 	<script type='text/javascript'>
 		function leftCanvasClick(e) {
 			if (e != null) {
-				alert(e);
-				alert(e.screenX + "\n" + e.screenY);
-				alert(e.clientX + "\n" + e.clientY);
 				var leftCanvas = document.getElementById("leftCanvas");
 				var ctx = leftCanvas.getContext("2d");
-				ctx.moveTo(e.screenX - 5, e.screenY);
-				ctx.lineTo(e.screenX + 5, e.screenY);
+				ctx.moveTo(e.clientX - 5, e.clientY);
+				ctx.lineTo(e.clientX + 5, e.clientY);
 				ctx.stroke();
-				ctx.moveTo(e.screenX, e.screenY - 5);
-				ctx.lineTo(e.screenX, e.screenY + 5);
+				ctx.moveTo(e.clientX, e.clientY - 5);
+				ctx.lineTo(e.clientX, e.clientY + 5);
 				ctx.stroke();
 			}
 		}
