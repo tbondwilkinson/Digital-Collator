@@ -43,6 +43,8 @@
 			// The source of the image, is the last restoration point
 			oImg.src = restorePoints.pop();
 		}
+
+		return false;
 	}
 
 	function leftCanvasClick(e) {
@@ -105,11 +107,8 @@
 
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
-		alert(keyCode);
 		if (keyCode === 8) {
-			alert(keyCode);
 			undoDrawOnCanvas();
-			alert(keyCode);
 			return false;
 		}
 		return true;
@@ -123,13 +122,7 @@
 		leftCanvas.addEventListener("click", leftCanvasClick, false);
 		rightCanvas.addEventListener("click", rightCanvasClick, false);
 
-		alert("before!");
-
 		document.onkeydown = keydown;
-
-		alert("Why doesn't this show?");
-
-		alert(document.onkeydown);
 
 		var leftCtx = leftCanvas.getContext("2d");
 		var rightCtx = rightCanvas.getContext("2d");
