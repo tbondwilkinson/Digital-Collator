@@ -26,7 +26,7 @@
 
 			var ctx = leftCanvas.getContext("2d");
 			var img = new Image();
-			img.src = "~/SC179_BoD_1/SC179_Bod_1_A1.jpg";
+			img.src = "../../SC179_BoD_1/SC179_Bod_1_A1.jpg";
 			ctx.drawImage(img, 0, 0);
 		}
 	</script>
