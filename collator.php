@@ -7,100 +7,138 @@
 
 	<script type='text/javascript'>
 	var lCtx, rCtx;
+	var leftRestorePoints = [];
+	var rightRestorePoints = [];
 
-		function leftCanvasClick(e) {
-			if (e != null) {
-				var leftCanvas = document.getElementById("leftCanvas");
-
-				var x;
-				var y;
-				if (e.pageX || e.pageY) { 
-				  x = e.pageX;
-				  y = e.pageY;
-				}
-				else { 
-				  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-				  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
-				} 
-				x -= leftCanvas.offsetLeft;
-				y -= leftCanvas.offsetTop;
-
-				lCtx.save();
-				lCtx.moveTo(x - 5, y);
-				lCtx.lineTo(x + 5, y);
-				lCtx.stroke();
-				lCtx.moveTo(x, y - 5);
-				lCtx.lineTo(x, y + 5);
-				lCtx.stroke();
+	// Function to restore the canvas from a restoration point
+	function undoDrawOnCanvas() {
+		// If we have some restore points
+		if (leftRestorePoints.length > 0) {
+			// Create a new Image object
+			var oImg = new Image();
+			// When the image object is fully loaded in the memory...
+			oImg.onload = function() {
+				// Get the canvas context
+				var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
+				// and draw the image (restore point) on the canvas. That would overwrite anything
+				// already drawn on the canvas, which will basically restore it to a previous point.
+				canvasContext.drawImage(oImg, 0, 0);
 			}
+			// The source of the image, is the last restoration point
+			oImg.src = restorePoints.pop();
 		}
-
-		function rightCanvasClick(e) {
-			if (e != null) {
-				var rightCanvas = document.getElementById("rightCanvas");
-
-				var x;
-				var y;
-				if (e.pageX || e.pageY) { 
-				  x = e.pageX;
-				  y = e.pageY;
-				}
-				else { 
-				  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-				  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
-				} 
-				x -= rightCanvas.offsetLeft;
-				y -= rightCanvas.offsetTop;
-
-				rCtx.save();
-				rCtx.moveTo(x - 5, y);
-				rCtx.lineTo(x + 5, y);
-				rCtx.stroke();
-				rCtx.moveTo(x, y - 5);
-				rCtx.lineTo(x, y + 5);
-				rCtx.stroke();
+		// If we have some restore points
+		if (rightRestorePoints.length > 0) {
+			// Create a new Image object
+			var oImg = new Image();
+			// When the image object is fully loaded in the memory...
+			oImg.onload = function() {
+				// Get the canvas context
+				var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
+				// and draw the image (restore point) on the canvas. That would overwrite anything
+				// already drawn on the canvas, which will basically restore it to a previous point.
+				canvasContext.drawImage(oImg, 0, 0);
 			}
+			// The source of the image, is the last restoration point
+			oImg.src = restorePoints.pop();
 		}
+	}
 
-		function keydown(event) {
-			var keyCode = ('which' in event) ? event.which : event.keyCode;
-			if (keyCode === 8) {
-				var rightCanvas = document.getElementById("rightCanvas");
-				rCtx.restore();
-
-				var leftCanvas = document.getElementById("leftCanvas");
-				lCtx.restore();
-				return false;
+	function leftCanvasClick(e) {
+		if (e != null) {
+			var x;
+			var y;
+			if (e.pageX || e.pageY) { 
+			  x = e.pageX;
+			  y = e.pageY;
 			}
-			return true;
-		}
+			else { 
+			  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+			  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+			} 
+			x -= leftCanvas.offsetLeft;
+			y -= leftCanvas.offsetTop;
 
-		window.onload = function() {
-			var leftCanvas = document.getElementById("leftCanvas");
+
+			var imgSrc = oCanvas.toDataURL("image/png");
+			leftRestorePoints.push(imgSrc);
+
+			lCtx.moveTo(x - 5, y);
+			lCtx.lineTo(x + 5, y);
+			lCtx.stroke();
+			lCtx.moveTo(x, y - 5);
+			lCtx.lineTo(x, y + 5);
+			lCtx.stroke();
+		}
+	}
+
+	function rightCanvasClick(e) {
+		if (e != null) {
+			var x;
+			var y;
+			if (e.pageX || e.pageY) { 
+			  x = e.pageX;
+			  y = e.pageY;
+			}
+			else { 
+			  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+			  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+			} 
+			x -= rightCanvas.offsetLeft;
+			y -= rightCanvas.offsetTop;
+
+
+			var imgSrc = oCanvas.toDataURL("image/png");
+			rightRestorePoints.push(imgSrc);
+
+			rCtx.moveTo(x - 5, y);
+			rCtx.lineTo(x + 5, y);
+			rCtx.stroke();
+			rCtx.moveTo(x, y - 5);
+			rCtx.lineTo(x, y + 5);
+			rCtx.stroke();
+		}
+	}
+
+	function keydown(event) {
+		var keyCode = ('which' in event) ? event.which : event.keyCode;
+		if (keyCode === 8) {
 			var rightCanvas = document.getElementById("rightCanvas");
-			lCtx = leftCanvas.getContext("2d");
-			rCtx = rightCanvas.getContext("2d");
-			leftCanvas.addEventListener("click", leftCanvasClick, false);
-			rightCanvas.addEventListener("click", rightCanvasClick, false);
+			rCtx.restore();
 
-			document.onkeydown = keydown;
-
-			var leftCtx = leftCanvas.getContext("2d");
-			var rightCtx = rightCanvas.getContext("2d");
-
-			var leftImg = new Image();
-			leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
-        	leftImg.onload = function() {	
-				leftCtx.drawImage(leftImg, 0, 0, 587, 802);
-        	};
-
-			var rightImg = new Image();
-			rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
-
-        	rightImg.onload = function() {	
-				rightCtx.drawImage(rightImg, 0, 0, 587, 802);
-        	};
+			var leftCanvas = document.getElementById("leftCanvas");
+			lCtx.restore();
+			return false;
 		}
+		return true;
+	}
+
+	window.onload = function() {
+		var leftCanvas = document.getElementById("leftCanvas");
+		var rightCanvas = document.getElementById("rightCanvas");
+		lCtx = leftCanvas.getContext("2d");
+		rCtx = rightCanvas.getContext("2d");
+		leftCanvas.addEventListener("click", leftCanvasClick, false);
+		rightCanvas.addEventListener("click", rightCanvasClick, false);
+
+		document.onkeydown = keydown;
+
+		var leftCtx = leftCanvas.getContext("2d");
+		var rightCtx = rightCanvas.getContext("2d");
+
+		var leftImg = new Image();
+		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
+    	leftImg.onload = function() {	
+			leftCtx.drawImage(leftImg, 0, 0, 587, 802);
+    	};
+
+		var rightImg = new Image();
+		rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
+
+    	rightImg.onload = function() {	
+			rightCtx.drawImage(rightImg, 0, 0, 587, 802);
+    	};
+    };
 	</script>
 </head>
 <body>
