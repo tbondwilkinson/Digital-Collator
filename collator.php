@@ -71,11 +71,16 @@
 
 			var leftImg = new Image();
 			leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
-			leftCtx.drawImage(leftImg, 0, 0, 500, 500);
+        	leftImg.onload = function() {	
+				leftCtx.drawImage(leftImg, 0, 0, 500, 500);
+        	};
 
 			var rightImg = new Image();
 			rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
-			rightCtx.drawImage(rightImg, 0, 0, 500, 500);
+
+        	rightImg.onload = function() {	
+				rightCtx.drawImage(rightImg, 0, 0, 500, 500);
+        	};
 		}
 	</script>
 </head>
