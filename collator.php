@@ -12,6 +12,7 @@
 
 	// Function to restore the canvas from a restoration point
 	function undoDrawOnCanvas() {
+		alert("Undo drawing");
 		// If we have some restore points
 		if (leftRestorePoints.length > 0) {
 			// Create a new Image object
@@ -123,6 +124,8 @@
 		rightCanvas.addEventListener("click", rightCanvasClick, false);
 
 		document.onkeydown = keydown;
+
+		alert(document.onkeydown);
 
 		var leftCtx = leftCanvas.getContext("2d");
 		var rightCtx = rightCanvas.getContext("2d");
