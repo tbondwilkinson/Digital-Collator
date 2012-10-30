@@ -75,6 +75,7 @@
 				lCtx.restore();
 				return false;
 			}
+			return true;
 		}
 
 		window.onload = function() {
@@ -83,7 +84,7 @@
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
 			rightCanvas.addEventListener("click", rightCanvasClick, false);
 
-			window.addEventListener("keydown", keydown, false);
+			document.onkeydown = keydown;
 
 			var leftCtx = leftCanvas.getContext("2d");
 			var rightCtx = rightCanvas.getContext("2d");
