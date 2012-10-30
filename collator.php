@@ -82,7 +82,7 @@
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
 			rightCanvas.addEventListener("click", rightCanvasClick, false);
 
-			document.addEventListener("keydown", keydown, false);
+			window.addEventListener("keydown", keydown, false);
 
 			var leftCtx = leftCanvas.getContext("2d");
 			var rightCtx = rightCanvas.getContext("2d");
