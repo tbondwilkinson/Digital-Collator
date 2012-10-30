@@ -7,8 +7,19 @@
 
 	<script type='text/javascript'>
 		function leftCanvasClick(e) {
-			e.stopPropogation();
-			alert(e);
+			if (e != null) {
+				alert(e);
+				alert(e.screenX + "\n" + e.screenY);
+				alert(e.clientX + "\n" + e.clientY);
+				var leftCanvas = document.getElementById("leftCanvas");
+				var ctx = leftCanvas.getContext("2d");
+				ctx.moveTo(e.screenX - 5, e.screenY);
+				ctx.lineTo(e.screenX + 5, e.screenY);
+				ctx.stroke();
+				ctx.mvoeTo(e.screenX, e.screenY - 5);
+				ctx.lineTo(e.screenX, e.screenY + 5);
+				ctx.stroke();
+			}
 		}
 
 		window.onload = function() {
@@ -16,8 +27,7 @@
 			var rightCanvas = document.getElementById("rightCanvas");
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
 
-			var c = document.getElementById("leftCanvas");
-			var ctx = c.getContext("2d");
+			var ctx = leftCanvas.getContext("2d");
 			var img = new Image();
 			img.src = "http://www.w3schools.com/html/img_the_scream.jpg";
 			ctx.drawImage(img, 0, 0);
