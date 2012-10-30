@@ -77,7 +77,7 @@
 			var rightImg = new Image();
 			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
 			rightCtx.drawImage(rightImg, 0, 0, 500, 500);
-			alert(rightImg);
+			alert(rightImg.toString());
 		}
 	</script>
 </head>
