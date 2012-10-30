@@ -71,7 +71,6 @@
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
 		if (keyCode === 8) {
-			alert("Undo drawing");
 			// If we have some restore points
 			if (leftRestorePoints.length > 0) {
 				alert("restore left");
