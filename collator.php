@@ -73,7 +73,6 @@
 		if (keyCode === 8) {
 			// If we have some restore points
 			if (leftRestorePoints.length > 0) {
-				alert("restore left");
 				// Create a new Image object
 				var oImg = new Image();
 				// When the image object is fully loaded in the memory...
@@ -89,7 +88,6 @@
 			}
 			// If we have some restore points
 			if (rightRestorePoints.length > 0) {
-				alert("restore right");
 				// Create a new Image object
 				var oImg = new Image();
 				// When the image object is fully loaded in the memory...
@@ -103,7 +101,6 @@
 				// The source of the image, is the last restoration point
 				oImg.src = restorePoints.pop();
 			}
-			alert("End of undo");
 			return false;
 		}
 		return true;
