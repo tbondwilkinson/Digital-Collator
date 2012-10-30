@@ -6,11 +6,13 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 
 	<script type='text/javascript'>
-		var c = document.getElementById("leftCanvas");
-		var ctx= c.getContext("2d");
-		var img = new Image();
-		img.src = "http://www.w3schools.com/html/img_the_scream.jpg";
-		ctx.drawImage(img, 0, 0);
+		window.onload = function() {
+			var c = document.getElementById("leftCanvas");
+			var ctx= c.getContext("2d");
+			var img = new Image();
+			img.src = "http://www.w3schools.com/html/img_the_scream.jpg";
+			ctx.drawImage(img, 0, 0);
+		}
 	</script>
 </head>
 <body>
