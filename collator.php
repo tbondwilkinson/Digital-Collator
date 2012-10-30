@@ -75,6 +75,7 @@
 			if (leftRestorePoints.length > 0) {
 				var lImg = new Image();
 				lImg.onload = function() {
+    				lCtx.clearRect(0, 0, canvas.width, canvas.height);
 					lCtx.drawImage(lImg, 0, 0);
 				}
 				lImg.src = leftRestorePoints.pop();
@@ -83,6 +84,7 @@
 			if (rightRestorePoints.length > 0) {
 				var rImg = new Image();
 				rImg.onload = function() {
+					rCtx.clearRect(0, 0, canvas.width, canvas.height);
 					rCtx.drawImage(rImg, 0, 0);
 				}
 				rImg.src = rightRestorePoints.pop();
@@ -104,7 +106,8 @@
 
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
-    	leftImg.onload = function() {	
+    	leftImg.onload = function() {
+    		lCtx.clearRect(0, 0, canvas.width, canvas.height);
 			lCtx.drawImage(leftImg, 0, 0, 587, 802);
     	};
 
