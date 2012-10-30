@@ -16,7 +16,7 @@
 				ctx.moveTo(e.screenX - 5, e.screenY);
 				ctx.lineTo(e.screenX + 5, e.screenY);
 				ctx.stroke();
-				ctx.mvoeTo(e.screenX, e.screenY - 5);
+				ctx.moveTo(e.screenX, e.screenY - 5);
 				ctx.lineTo(e.screenX, e.screenY + 5);
 				ctx.stroke();
 			}
