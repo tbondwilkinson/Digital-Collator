@@ -105,7 +105,9 @@
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
 		if (keyCode === 8) {
+			alert(keyCode);
 			undoDrawOnCanvas();
+			alert(keyCode);
 			return false;
 		}
 		return true;
