@@ -81,7 +81,7 @@
 					var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
 					// and draw the image (restore point) on the canvas. That would overwrite anything
 					// already drawn on the canvas, which will basically restore it to a previous point.
-					canvasContext.drawImage(oImg, 0, 0);
+					canvasContext.drawImage(lImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
 				lImg.src = leftRestorePoints.pop();
@@ -96,7 +96,7 @@
 					var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
 					// and draw the image (restore point) on the canvas. That would overwrite anything
 					// already drawn on the canvas, which will basically restore it to a previous point.
-					canvasContext.drawImage(oImg, 0, 0);
+					canvasContext.drawImage(rImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
 				rImg.src = rightRestorePoints.pop();
