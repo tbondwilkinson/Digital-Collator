@@ -105,12 +105,7 @@
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
 		if (keyCode === 8) {
-			var rightCanvas = document.getElementById("rightCanvas");
-			rCtx.restore();
-
-			var leftCanvas = document.getElementById("leftCanvas");
-			lCtx.restore();
-			return false;
+			undoDrawOnCanvas();
 		}
 		return true;
 	}
