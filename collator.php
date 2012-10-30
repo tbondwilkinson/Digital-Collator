@@ -9,12 +9,26 @@
 		function leftCanvasClick(e) {
 			if (e != null) {
 				var leftCanvas = document.getElementById("leftCanvas");
+
+				var x;
+				var y;
+				if (e.pageX || e.pageY) { 
+				  x = e.pageX;
+				  y = e.pageY;
+				}
+				else { 
+				  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+				  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+				} 
+				x -= gCanvasElement.offsetLeft;
+				y -= gCanvasElement.offsetTop;
+
 				var ctx = leftCanvas.getContext("2d");
-				ctx.moveTo(e.clientX - 5, e.clientY);
-				ctx.lineTo(e.clientX + 5, e.clientY);
+				ctx.moveTo(x - 5, y);
+				ctx.lineTo(x + 5, y);
 				ctx.stroke();
-				ctx.moveTo(e.clientX, e.clientY - 5);
-				ctx.lineTo(e.clientX, e.clientY + 5);
+				ctx.moveTo(x, y - 5);
+				ctx.lineTo(x, y + 5);
 				ctx.stroke();
 			}
 		}
