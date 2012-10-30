@@ -18,10 +18,10 @@
 	</script>
 </head>
 <body>
-	<canvas id="leftCanvas" width="200" height="100"
+	<canvas id="leftCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: left">
 	</canvas>
-	<canvas id="rightCanvas" width="200" height="100"
+	<canvas id="rightCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: right">
 	</canvas>
 	<div id="images" style="display:none">
