@@ -84,7 +84,7 @@
 					canvasContext.drawImage(oImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
-				oImg.src = restorePoints.pop();
+				oImg.src = leftRestorePoints.pop();
 			}
 			// If we have some restore points
 			if (rightRestorePoints.length > 0) {
@@ -99,7 +99,7 @@
 					canvasContext.drawImage(oImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
-				oImg.src = restorePoints.pop();
+				oImg.src = rightRestorePoints.pop();
 			}
 			return false;
 		}
