@@ -123,7 +123,11 @@
 		leftCanvas.addEventListener("click", leftCanvasClick, false);
 		rightCanvas.addEventListener("click", rightCanvasClick, false);
 
+		alert("before!");
+
 		document.onkeydown = keydown;
+
+		alert("Why doesn't this show?");
 
 		alert(document.onkeydown);
 
