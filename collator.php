@@ -88,8 +88,6 @@
 	<canvas id="rightCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: right">
 	</canvas>
-	<img src="../SC179_BoD_1/SC179_Bod_1_A1.jpg">
-	<img src="../SC179_HRH_1/SC179_HRH_1_A1.jpg">
 </body>
 </html>
 
