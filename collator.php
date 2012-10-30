@@ -6,11 +6,10 @@
 
 	<script type='text/javascript'>
 		function ready() {
-			var canvas, ctx, img;
-			canvas = document.getElementById("leftCanvas");
-			ctx = canvas.getContext("2d");
-			img = document.getElementById("image1");
-			ctx.drawImage(img, 0, 0);
+			var c=document.getElementById("leftCanvas");
+			var ctx=c.getContext("2d");
+			var img=document.getElementById("image1");
+			ctx.drawImage(img,10,10);
 			alert(img.getAttribute("height"));
 			alert(img.getAttribute("width"));
 		}
@@ -26,7 +25,7 @@
 	style="border:1px solid #000000; float: right">
 	</canvas>
 	<div id="images" style="display:none">
-		<img id="image1" src="http://www.w3schools.com/html/img_the_scream.jpg">
+		<img id="image1" src="http://www.w3schools.com/html/img_the_scream.jpg" width="220" height="277">
 		<img id="image2" src="http://www.w3schools.com/html/img_the_scream.jpg">
 	</div>
 </body>
