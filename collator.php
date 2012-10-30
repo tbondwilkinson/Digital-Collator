@@ -74,7 +74,7 @@
 			leftCtx.drawImage(leftImg, 0, 0);
 
 			var rightImg = new Image();
-			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
+			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg ";
 			rightCtx.drawImage(rightImg, 0, 0);
 
 		}
@@ -88,6 +88,7 @@
 	<canvas id="rightCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: right">
 	</canvas>
+	<img src="../SC179_BoD_1/SC179_Bod_1_A1.jpg">
 </body>
 </html>
 
