@@ -72,24 +72,24 @@
 			var leftImg = new Image();
 			leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
         	leftImg.onload = function() {	
-				leftCtx.drawImage(leftImg, 0, 0, 500, 500);
+				leftCtx.drawImage(leftImg, 0, 0, 587, 802);
         	};
 
 			var rightImg = new Image();
 			rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
 
         	rightImg.onload = function() {	
-				rightCtx.drawImage(rightImg, 0, 0, 500, 500);
+				rightCtx.drawImage(rightImg, 0, 0, 587, 802);
         	};
 		}
 	</script>
 </head>
 <body>
-	<canvas id="leftCanvas" width="500" height="500"
+	<canvas id="leftCanvas" width="587" height="802"
 	style="border:1px solid #000000; float: left" onclick="leftCanvasClick()">
 	Your browser does not support the HTML5 canvas tag
 	</canvas>
-	<canvas id="rightCanvas" width="500" height="500"
+	<canvas id="rightCanvas" width="587" height="802"
 	style="border:1px solid #000000; float: right">
 	</canvas>
 </body>
