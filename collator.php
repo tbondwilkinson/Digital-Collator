@@ -23,10 +23,8 @@
 	<canvas id="rightCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: right">
 	</canvas>
-	<div id="images" style="display:none">
 		<img id="image1" src="http://www.w3schools.com/html/img_the_scream.jpg" width="220" height="277">
 		<img id="image2" src="http://www.w3schools.com/html/img_the_scream.jpg">
-	</div>
 </body>
 </html>
 
