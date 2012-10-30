@@ -70,14 +70,14 @@
 			var rightCtx = rightCanvas.getContext("2d");
 
 			var leftImg = new Image();
-			leftImg.src = "../SC179_BoD_1/SC179_Bod_1_A1.jpg";
+			leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
 			leftCtx.drawImage(leftImg, 0, 0, 500, 500);
 			alert(leftImg);
 
 			var rightImg = new Image();
-			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
+			rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
 			rightCtx.drawImage(rightImg, 0, 0, 500, 500);
-			alert(rightImg.toString());
+			alert(rightImg;
 		}
 	</script>
 </head>
