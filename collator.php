@@ -10,42 +10,6 @@
 	var leftRestorePoints = [];
 	var rightRestorePoints = [];
 
-	// Function to restore the canvas from a restoration point
-	function undoDrawOnCanvas() {
-		alert("Undo drawing");
-		// If we have some restore points
-		if (leftRestorePoints.length > 0) {
-			// Create a new Image object
-			var oImg = new Image();
-			// When the image object is fully loaded in the memory...
-			oImg.onload = function() {
-				// Get the canvas context
-				var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
-				// and draw the image (restore point) on the canvas. That would overwrite anything
-				// already drawn on the canvas, which will basically restore it to a previous point.
-				canvasContext.drawImage(oImg, 0, 0);
-			}
-			// The source of the image, is the last restoration point
-			oImg.src = restorePoints.pop();
-		}
-		// If we have some restore points
-		if (rightRestorePoints.length > 0) {
-			// Create a new Image object
-			var oImg = new Image();
-			// When the image object is fully loaded in the memory...
-			oImg.onload = function() {
-				// Get the canvas context
-				var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
-				// and draw the image (restore point) on the canvas. That would overwrite anything
-				// already drawn on the canvas, which will basically restore it to a previous point.
-				canvasContext.drawImage(oImg, 0, 0);
-			}
-			// The source of the image, is the last restoration point
-			oImg.src = restorePoints.pop();
-		}
-		alert("End of undo");
-	}
-
 	function leftCanvasClick(e) {
 		if (e != null) {
 			var leftCanvas = document.getElementById("leftCanvas");
@@ -107,7 +71,40 @@
 	function keydown(event) {
 		var keyCode = ('which' in event) ? event.which : event.keyCode;
 		if (keyCode === 8) {
-			undoDrawOnCanvas();
+			alert("Undo drawing");
+			// If we have some restore points
+			if (leftRestorePoints.length > 0) {
+				alert("restore left");
+				// Create a new Image object
+				var oImg = new Image();
+				// When the image object is fully loaded in the memory...
+				oImg.onload = function() {
+					// Get the canvas context
+					var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
+					// and draw the image (restore point) on the canvas. That would overwrite anything
+					// already drawn on the canvas, which will basically restore it to a previous point.
+					canvasContext.drawImage(oImg, 0, 0);
+				}
+				// The source of the image, is the last restoration point
+				oImg.src = restorePoints.pop();
+			}
+			// If we have some restore points
+			if (rightRestorePoints.length > 0) {
+				alert("restore right");
+				// Create a new Image object
+				var oImg = new Image();
+				// When the image object is fully loaded in the memory...
+				oImg.onload = function() {
+					// Get the canvas context
+					var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
+					// and draw the image (restore point) on the canvas. That would overwrite anything
+					// already drawn on the canvas, which will basically restore it to a previous point.
+					canvasContext.drawImage(oImg, 0, 0);
+				}
+				// The source of the image, is the last restoration point
+				oImg.src = restorePoints.pop();
+			}
+			alert("End of undo");
 			return false;
 		}
 		return true;
