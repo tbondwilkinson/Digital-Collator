@@ -74,9 +74,9 @@
 			// If we have some restore points
 			if (leftRestorePoints.length > 0) {
 				// Create a new Image object
-				var oImg = new Image();
+				var lImg = new Image();
 				// When the image object is fully loaded in the memory...
-				oImg.onload = function() {
+				lImg.onload = function() {
 					// Get the canvas context
 					var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
 					// and draw the image (restore point) on the canvas. That would overwrite anything
@@ -84,14 +84,14 @@
 					canvasContext.drawImage(oImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
-				oImg.src = leftRestorePoints.pop();
+				lImg.src = leftRestorePoints.pop();
 			}
 			// If we have some restore points
 			if (rightRestorePoints.length > 0) {
 				// Create a new Image object
-				var oImg = new Image();
+				var rImg = new Image();
 				// When the image object is fully loaded in the memory...
-				oImg.onload = function() {
+				rImg.onload = function() {
 					// Get the canvas context
 					var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
 					// and draw the image (restore point) on the canvas. That would overwrite anything
@@ -99,7 +99,7 @@
 					canvasContext.drawImage(oImg, 0, 0);
 				}
 				// The source of the image, is the last restoration point
-				oImg.src = rightRestorePoints.pop();
+				rImg.src = rightRestorePoints.pop();
 			}
 			return false;
 		}
