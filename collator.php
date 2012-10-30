@@ -15,7 +15,7 @@
 		<img id="image1" src="http://www.w3schools.com/html/img_the_scream.jpg">
 		<img id="image2" src="http://www.w3schools.com/html/img_the_scream.jpg">
 	</div>
-	<script>
+	<script type='text/javascript'>
 		function ready() {
 			var c, ctx, img;
 			c = $("#leftCanvas");
