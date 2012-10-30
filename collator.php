@@ -10,9 +10,11 @@
 			canvas = $("#leftCanvas");
 			ctx = canvas[0].getContext("2d");
 			img = $("#image1");
-			ctx.drawImage(img, 0, 0);
-			alert(img.attr("height"));
-			alert(img.attr("width"));
+			alert(img);
+			alert(canvas);
+			ctx.drawImage(img[0], 0, 0);
+			alert(img[0].attr("height"));
+			alert(img[0].attr("width"));
 		}
 
 		$(document).ready(ready);
