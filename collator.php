@@ -43,8 +43,7 @@
 			// The source of the image, is the last restoration point
 			oImg.src = restorePoints.pop();
 		}
-
-		return false;
+		alert("End of undo");
 	}
 
 	function leftCanvasClick(e) {
