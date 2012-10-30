@@ -33,15 +33,50 @@
 			}
 		}
 
+		function rightCanvasClick(e) {
+			if (e != null) {
+				var rightCanvas = document.getElementById("rightCanvas");
+
+				var x;
+				var y;
+				if (e.pageX || e.pageY) { 
+				  x = e.pageX;
+				  y = e.pageY;
+				}
+				else { 
+				  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+				  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+				} 
+				x -= rightCanvas.offsetLeft;
+				y -= rightCanvas.offsetTop;
+
+				var ctx = rightCanvas.getContext("2d");
+				ctx.moveTo(x - 5, y);
+				ctx.lineTo(x + 5, y);
+				ctx.stroke();
+				ctx.moveTo(x, y - 5);
+				ctx.lineTo(x, y + 5);
+				ctx.stroke();
+			}
+		}
+
 		window.onload = function() {
 			var leftCanvas = document.getElementById("leftCanvas");
 			var rightCanvas = document.getElementById("rightCanvas");
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
+			rightCanvas.addEventListener("click", rightCanvasClick, false);
 
-			var ctx = leftCanvas.getContext("2d");
-			var img = new Image();
-			img.src = "http://www.w3schools.com/html/img_the_scream.jpg";
-			ctx.drawImage(img, 0, 0);
+			var leftCtx = leftCanvas.getContext("2d");
+			var rightCtx = rightCanvas.getContext("2d");
+
+			var leftImg = new Image();
+			leftImg.src = "../SC179_BoD_1/SC179_Bod_1_A1.jpg";
+			leftCtx.drawImage(leftImg, 0, 0);
+
+			var rightImg = new Image();
+			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
+			rightCtx.drawImage(rightImg, 0, 0);
+
 		}
 	</script>
 </head>
