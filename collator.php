@@ -6,7 +6,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 
 	<script type='text/javascript'>
-	var lCtx, rCtx;
 	var leftRestorePoints = [];
 	var rightRestorePoints = [];
 
@@ -30,6 +29,8 @@
 			var imgSrc = leftCanvas.toDataURL("image/png");
 			leftRestorePoints.push(imgSrc);
 
+			var lCtx = leftCanvas.getContext("2d");
+
 			lCtx.moveTo(x - 5, y);
 			lCtx.lineTo(x + 5, y);
 			lCtx.stroke();
@@ -41,7 +42,7 @@
 
 	function rightCanvasClick(e) {
 		if (e != null) {
-			var leftCanvas = document.getElementById("rightCanvas");
+			var rightCanvas = document.getElementById("rightCanvas");
 			var x;
 			var y;
 			if (e.pageX || e.pageY) { 
@@ -58,6 +59,8 @@
 
 			var imgSrc = rightCanvas.toDataURL("image/png");
 			rightRestorePoints.push(imgSrc);
+
+			var rCtx = rightCanvas.getContext("2d");
 
 			rCtx.moveTo(x - 5, y);
 			rCtx.lineTo(x + 5, y);
