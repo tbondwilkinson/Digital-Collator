@@ -6,6 +6,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 
 	<script type='text/javascript'>
+	var lCtx, rCtx;
+
 		function leftCanvasClick(e) {
 			if (e != null) {
 				var leftCanvas = document.getElementById("leftCanvas");
@@ -23,14 +25,13 @@
 				x -= leftCanvas.offsetLeft;
 				y -= leftCanvas.offsetTop;
 
-				var ctx = leftCanvas.getContext("2d");
-				ctx.save();
-				ctx.moveTo(x - 5, y);
-				ctx.lineTo(x + 5, y);
-				ctx.stroke();
-				ctx.moveTo(x, y - 5);
-				ctx.lineTo(x, y + 5);
-				ctx.stroke();
+				lCtx.save();
+				lCtx.moveTo(x - 5, y);
+				lCtx.lineTo(x + 5, y);
+				lCtx.stroke();
+				lCtx.moveTo(x, y - 5);
+				lCtx.lineTo(x, y + 5);
+				lCtx.stroke();
 			}
 		}
 
@@ -51,27 +52,23 @@
 				x -= rightCanvas.offsetLeft;
 				y -= rightCanvas.offsetTop;
 
-				var ctx = rightCanvas.getContext("2d");
-				ctx.save();
-				ctx.moveTo(x - 5, y);
-				ctx.lineTo(x + 5, y);
-				ctx.stroke();
-				ctx.moveTo(x, y - 5);
-				ctx.lineTo(x, y + 5);
-				ctx.stroke();
+				rCtx.save();
+				rCtx.moveTo(x - 5, y);
+				rCtx.lineTo(x + 5, y);
+				rCtx.stroke();
+				rCtx.moveTo(x, y - 5);
+				rCtx.lineTo(x, y + 5);
+				rCtx.stroke();
 			}
 		}
 
 		function keydown(event) {
 			var keyCode = ('which' in event) ? event.which : event.keyCode;
 			if (keyCode === 8) {
-				alert(keyCode);
 				var rightCanvas = document.getElementById("rightCanvas");
-				var rCtx = rightCanvas.getContext("2d");
 				rCtx.restore();
 
 				var leftCanvas = document.getElementById("leftCanvas");
-				var lCtx = leftCanvas.getContext("2d");
 				lCtx.restore();
 				return false;
 			}
@@ -81,6 +78,8 @@
 		window.onload = function() {
 			var leftCanvas = document.getElementById("leftCanvas");
 			var rightCanvas = document.getElementById("rightCanvas");
+			lCtx = leftCanvas.getContext("2d");
+			rCtx = rightCanvas.getContext("2d");
 			leftCanvas.addEventListener("click", leftCanvasClick, false);
 			rightCanvas.addEventListener("click", rightCanvasClick, false);
 
