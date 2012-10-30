@@ -6,24 +6,35 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 
 	<script type='text/javascript'>
+		function relMouseCoords(event){
+		    var totalOffsetX = 0;
+		    var totalOffsetY = 0;
+		    var canvasX = 0;
+		    var canvasY = 0;
+		    var currentElement = this;
+
+		    do{
+		        totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+		        totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+		    }
+		    while(currentElement = currentElement.offsetParent)
+
+		    canvasX = event.pageX - totalOffsetX;
+		    canvasY = event.pageY - totalOffsetY;
+
+		    return {x:canvasX, y:canvasY}
+		}
+		HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
+
 		function leftCanvasClick(e) {
 			if (e != null) {
 				var leftCanvas = document.getElementById("leftCanvas");
-
-				var x;
-				var y;
-				if (e.pageX || e.pageY) { 
-				  x = e.pageX;
-				  y = e.pageY;
-				}
-				else { 
-				  x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-				  y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
-				} 
-				x -= gCanvasElement.offsetLeft;
-				y -= gCanvasElement.offsetTop;
-
 				var ctx = leftCanvas.getContext("2d");
+
+				var coords = relMouseCoords(e);
+				var x = coords.x;
+				var y = coords.y;
+
 				ctx.moveTo(x - 5, y);
 				ctx.lineTo(x + 5, y);
 				ctx.stroke();
