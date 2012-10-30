@@ -64,8 +64,8 @@
 
 		function keydown(event) {
 			var keyCode = ('which' in event) ? event.which : event.keyCode;
-			alert(keyCode);
-			if (keyCode == 8) {
+			if (keyCode === 8) {
+				alert(keyCode);
 				var rightCanvas = document.getElementById("rightCanvas");
 				var rCtx = rightCanvas.getContext("2d");
 				rCtx.restore();
@@ -73,6 +73,7 @@
 				var leftCanvas = document.getElementById("leftCanvas");
 				var lCtx = leftCanvas.getContext("2d");
 				lCtx.restore();
+				return false;
 			}
 		}
 
