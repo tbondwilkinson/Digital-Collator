@@ -16,13 +16,17 @@
 		<img id="image2" src="http://www.w3schools.com/html/img_the_scream.jpg">
 	</div>
 	<script>
-		var c, ctx, img;
-		c = $("#leftCanvas");
-		ctx = c.getContext("2d");
-		img = $("#image1");
-		ctx.drawImage(img, 0, 0);
-		alert(img.attr("height"));
-		alert(img.attr("width"));
+		function ready() {
+			var c, ctx, img;
+			c = $("#leftCanvas");
+			ctx = c.getContext("2d");
+			img = $("#image1");
+			ctx.drawImage(img, 0, 0);
+			alert(img.attr("height"));
+			alert(img.attr("width"));
+		}
+
+		$(document).ready(ready);
 	</script>
 </body>
 
