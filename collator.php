@@ -19,6 +19,7 @@
 <body>
 	<canvas id="leftCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: left">
+	Your browser does not support the HTML5 canvas tag
 	</canvas>
 	<canvas id="rightCanvas" width="500" height="500"
 	style="border:1px solid #000000; float: right">
