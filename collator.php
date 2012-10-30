@@ -7,9 +7,9 @@
 	<script type='text/javascript'>
 		function ready() {
 			var canvas, ctx, img;
-			canvas = $("#leftCanvas");
-			ctx = canvas[0].getContext("2d");
-			img = $("#image1");
+			canvas = document.getElementById("leftCanvas");
+			ctx = canvas.getContext("2d");
+			img = document.getElementById("image1");
 			alert(img);
 			alert(canvas);
 			ctx.drawImage(img[0], 0, 0);
