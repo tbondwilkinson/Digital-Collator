@@ -6,6 +6,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
 
 	<script type='text/javascript'>
+	var lCtx, rCtx;
 	var leftRestorePoints = [];
 	var rightRestorePoints = [];
 
@@ -28,8 +29,6 @@
 
 			var imgSrc = leftCanvas.toDataURL("image/png");
 			leftRestorePoints.push(imgSrc);
-
-			var lCtx = leftCanvas.getContext("2d");
 
 			lCtx.moveTo(x - 5, y);
 			lCtx.lineTo(x + 5, y);
@@ -60,8 +59,6 @@
 			var imgSrc = rightCanvas.toDataURL("image/png");
 			rightRestorePoints.push(imgSrc);
 
-			var rCtx = rightCanvas.getContext("2d");
-
 			rCtx.moveTo(x - 5, y);
 			rCtx.lineTo(x + 5, y);
 			rCtx.stroke();
@@ -76,32 +73,18 @@
 		if (keyCode === 85) {
 			// If we have some restore points
 			if (leftRestorePoints.length > 0) {
-				// Create a new Image object
 				var lImg = new Image();
-				// When the image object is fully loaded in the memory...
 				lImg.onload = function() {
-					// Get the canvas context
-					var canvasContext = document.getElementById("leftCanvas").getContext("2d");		
-					// and draw the image (restore point) on the canvas. That would overwrite anything
-					// already drawn on the canvas, which will basically restore it to a previous point.
-					canvasContext.drawImage(lImg, 0, 0);
+					lCtx.drawImage(lImg, 0, 0);
 				}
-				// The source of the image, is the last restoration point
 				lImg.src = leftRestorePoints.pop();
 			}
 			// If we have some restore points
 			if (rightRestorePoints.length > 0) {
-				// Create a new Image object
 				var rImg = new Image();
-				// When the image object is fully loaded in the memory...
 				rImg.onload = function() {
-					// Get the canvas context
-					var canvasContext = document.getElementById("rightCanvas").getContext("2d");		
-					// and draw the image (restore point) on the canvas. That would overwrite anything
-					// already drawn on the canvas, which will basically restore it to a previous point.
-					canvasContext.drawImage(rImg, 0, 0);
+					rCtx.drawImage(rImg, 0, 0);
 				}
-				// The source of the image, is the last restoration point
 				rImg.src = rightRestorePoints.pop();
 			}
 			return false;
@@ -119,20 +102,17 @@
 
 		document.onkeydown = keydown;
 
-		var leftCtx = leftCanvas.getContext("2d");
-		var rightCtx = rightCanvas.getContext("2d");
-
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
     	leftImg.onload = function() {	
-			leftCtx.drawImage(leftImg, 0, 0, 587, 802);
+			lCtx.drawImage(leftImg, 0, 0, 587, 802);
     	};
 
 		var rightImg = new Image();
 		rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
 
     	rightImg.onload = function() {	
-			rightCtx.drawImage(rightImg, 0, 0, 587, 802);
+			rCtx.drawImage(rightImg, 0, 0, 587, 802);
     	};
     };
 	</script>
