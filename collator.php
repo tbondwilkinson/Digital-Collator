@@ -71,15 +71,11 @@
 
 			var leftImg = new Image();
 			leftImg.src = "../SC179_BoD_1/SC179_Bod_1_A1.jpg";
-			leftImg.style.width = 500;
-			leftImg.style.height = 500;
-			leftCtx.drawImage(leftImg, 0, 0);
+			leftCtx.drawImage(leftImg, 0, 0, 500, 500);
 
 			var rightImg = new Image();
 			rightImg.src = "../SC179_HRH_1/SC179_HRH_1_A1.jpg";
-			rightImg.style.width = 500;
-			rightImg.style.height = 500;
-			rightCtx.drawImage(rightImg, 0, 0);
+			rightCtx.drawImage(rightImg, 0, 0, 500, 500);
 
 		}
 	</script>
