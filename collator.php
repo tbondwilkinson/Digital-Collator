@@ -12,7 +12,7 @@
 			img = document.getElementById("image1");
 			alert(img);
 			alert(canvas);
-			ctx.drawImage(img[0], 0, 0);
+			ctx.drawImage(img, 0, 0);
 			alert(img[0].attr("height"));
 			alert(img[0].attr("width"));
 		}
