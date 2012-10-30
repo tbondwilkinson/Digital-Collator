@@ -46,6 +46,7 @@
 
 	function leftCanvasClick(e) {
 		if (e != null) {
+			var leftCanvas = document.getElementById("leftCanvas");
 			var x;
 			var y;
 			if (e.pageX || e.pageY) { 
@@ -60,7 +61,7 @@
 			y -= leftCanvas.offsetTop;
 
 
-			var imgSrc = oCanvas.toDataURL("image/png");
+			var imgSrc = leftCanvas.toDataURL("image/png");
 			leftRestorePoints.push(imgSrc);
 
 			lCtx.moveTo(x - 5, y);
@@ -74,6 +75,7 @@
 
 	function rightCanvasClick(e) {
 		if (e != null) {
+			var leftCanvas = document.getElementById("rightCanvas");
 			var x;
 			var y;
 			if (e.pageX || e.pageY) { 
@@ -88,7 +90,7 @@
 			y -= rightCanvas.offsetTop;
 
 
-			var imgSrc = oCanvas.toDataURL("image/png");
+			var imgSrc = rightCanvas.toDataURL("image/png");
 			rightRestorePoints.push(imgSrc);
 
 			rCtx.moveTo(x - 5, y);
