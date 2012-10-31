@@ -69,9 +69,8 @@
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
     	leftImg.onload = function() {
-    		alert(leftImg.width);
-    		alert(leftImg.height);
     		$("#leftCanvas").drawImage({
+    			layer: true,
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
     			y: 0,
@@ -80,6 +79,7 @@
     			click: function(layer) {
     				$("#leftCanvas").drawLine({
     					layer: true,
+    					fillStyle: "black",
     				  	strokeStyle: "#000",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX - 5, y1: layer.mouseY,
@@ -87,6 +87,7 @@
     				});
     				$("#leftCanvas").drawLine({
     					layer: true,
+    					fillStyle: "black",
     				  	strokeStyle: "#000",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX, y1: layer.mouseY - 5,
@@ -107,7 +108,7 @@
 	</script>
 </head>
 <body>
-	<canvas id="leftCanvas" width="587" height="802"
+	<canvas id="leftCanvas" width="2000" height="1400"
 	style="border:1px solid #000000; float: left">
 	Your browser does not support the HTML5 canvas tag
 	</canvas>
