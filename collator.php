@@ -73,7 +73,6 @@
 	    			point.x = mouseX / scale;
 	    			point.y = mouseY / scale;
 	    			rightLandmarks[rightLandmarks.length] = point;
-    				landamrks[] = array("x" => originalX, "y" => originalY);
     				$("#rightCanvas").drawLine({
     					layer: true,
     				  	strokeStyle: "red",
