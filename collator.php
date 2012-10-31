@@ -14,7 +14,7 @@
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
     	leftImg.onload = function() {
-    		leftCanvas.width = window.innerWidth/2 - 1;
+    		leftCanvas.width = window.innerWidth/2 - 2;
     		var scale = leftCanvas.width / leftImg.width;
     		leftCanvas.height = leftImg.height * scale;
     		$("#leftCanvas").drawImage({
@@ -49,7 +49,7 @@
 		var rightImg = new Image();
 		rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
     	rightImg.onload = function() {	
-			rightCanvas.width = window.innerWidth/2 - 1;
+			rightCanvas.width = window.innerWidth/2 - 2;
     		var scale = rightCanvas.width / rightImg.width;
     		rightCanvas.height = rightImg.height * scale;
     		$("#rightCanvas").drawImage({
