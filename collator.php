@@ -7,6 +7,9 @@
 	<script src="jcanvas.min.js"></script>
 
 	<script type='text/javascript'>
+	var leftLandmarks = new Array();
+	var rightLandamrks = new Array();
+
 	window.onload = function() {
 		var leftCanvas = document.getElementById("leftCanvas");
 		var rightCanvas = document.getElementById("rightCanvas");
@@ -15,7 +18,6 @@
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
     	leftImg.onload = function() {
     		leftCanvas.width = window.innerWidth/2 - 2;
-    		alert(leftCanvas.width);
     		var scale = leftCanvas.width / leftImg.width;
     		leftCanvas.height = leftImg.height * scale;
     		$("#leftCanvas").drawImage({
@@ -27,6 +29,13 @@
     			width: leftCanvas.width,
     			height: leftCanvas.height,
     			click: function(layer) {
+    				var originalX = mouseX / scale;
+    				var originalY = mouseY / scale;
+    				var point = new Object();
+    				point.x = mouseX / scale;
+    				point.y = mouseY / scale;
+    				leftLandmarks[leftLandmarks.length] = point;
+    				alert(originalX + ", " originalY);
     				$("#leftCanvas").drawLine({
     					layer: true,
     				  	strokeStyle: "red",
@@ -60,7 +69,11 @@
     			width: rightCanvas.width,
     			height: rightCanvas.height,
     			click: function(layer) {
-    				alert(scale);
+	    			var point = new Object();
+	    			point.x = mouseX / scale;
+	    			point.y = mouseY / scale;
+	    			rightLandmarks[rightLandmarks.length] = point;
+    				landamrks[] = array("x" => originalX, "y" => originalY);
     				$("#rightCanvas").drawLine({
     					layer: true,
     				  	strokeStyle: "red",
