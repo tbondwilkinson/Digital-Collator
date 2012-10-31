@@ -29,16 +29,14 @@
     			click: function(layer) {
     				$("#leftCanvas").drawLine({
     					layer: true,
-    					fillStyle: "black",
-    				  	strokeStyle: "#000",
+    				  	strokeStyle: "red",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX - 5, y1: layer.mouseY,
     				  	x2: layer.mouseX + 5, y2: layer.mouseY
     				});
     				$("#leftCanvas").drawLine({
     					layer: true,
-    					fillStyle: "black",
-    				  	strokeStyle: "#000",
+    				  	strokeStyle: "red",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX, y1: layer.mouseY - 5,
     				  	x2: layer.mouseX, y2: layer.mouseY + 5
@@ -64,16 +62,14 @@
     			click: function(layer) {
     				$("#rightCanvas").drawLine({
     					layer: true,
-    					fillStyle: "black",
-    				  	strokeStyle: "#000",
+    				  	strokeStyle: "red",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX - 5, y1: layer.mouseY,
     				  	x2: layer.mouseX + 5, y2: layer.mouseY
     				});
     				$("#rightCanvas").drawLine({
     					layer: true,
-    					fillStyle: "black",
-    				  	strokeStyle: "#000",
+    				  	strokeStyle: "red",
     				  	strokeWidth: 1,
     				  	x1: layer.mouseX, y1: layer.mouseY - 5,
     				  	x2: layer.mouseX, y2: layer.mouseY + 5
