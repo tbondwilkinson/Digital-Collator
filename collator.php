@@ -75,7 +75,7 @@
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
     			y: 0,
-    			scale: 1
+    			scale: 1,
     			click: function(layer) {
     				$("canvas").drawLine({
     				  strokeStyle: "#000",
@@ -104,7 +104,7 @@
 </head>
 <body>
 	<canvas id="leftCanvas" width="587" height="802"
-	style="border:1px solid #000000; float: left" onclick="leftCanvasClick()">
+	style="border:1px solid #000000; float: left">
 	Your browser does not support the HTML5 canvas tag
 	</canvas>
 	<canvas id="rightCanvas" width="587" height="802"
