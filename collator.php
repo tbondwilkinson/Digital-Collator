@@ -75,18 +75,22 @@
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
     			y: 0,
+    			width = leftImg.width,
+    			height = leftImg.height,
     			click: function(layer) {
     				$("#leftCanvas").drawLine({
-    				  strokeStyle: "#000",
-    				  strokeWidth: 1,
-    				  x1: layer.mouseX - 5, y1: layer.mouseY,
-    				  x2: layer.mouseX + 5, y2: layer.mouseY
+    					layer: true,
+    				  	strokeStyle: "#000",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
+    				  	x2: layer.mouseX + 5, y2: layer.mouseY
     				});
     				$("#leftCanvas").drawLine({
-    				  strokeStyle: "#000",
-    				  strokeWidth: 1,
-    				  x1: layer.mouseX, y1: layer.mouseY - 5,
-    				  x2: layer.mouseX, y2: layer.mouseY + 5
+    					layer: true,
+    				  	strokeStyle: "#000",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
+    				  	x2: layer.mouseX, y2: layer.mouseY + 5
     				});
     			 }
     		});
