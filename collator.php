@@ -60,6 +60,7 @@
     			width: rightCanvas.width,
     			height: rightCanvas.height,
     			click: function(layer) {
+    				alert(scale);
     				$("#rightCanvas").drawLine({
     					layer: true,
     				  	strokeStyle: "red",
