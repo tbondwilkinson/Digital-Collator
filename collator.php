@@ -74,8 +74,8 @@
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
     			y: 0,
-    			width: leftImg.width,
-    			height: leftImg.height,
+    			width: 2000,
+    			height: 1400,
     			click: function(layer) {
     				$("#leftCanvas").drawLine({
     					layer: true,
