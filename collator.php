@@ -15,11 +15,12 @@
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
     	leftImg.onload = function() {
     		leftCanvas.width = window.innerWidth/2 - 2;
+    		alert(leftCanvas.width);
     		var scale = leftCanvas.width / leftImg.width;
     		leftCanvas.height = leftImg.height * scale;
     		$("#leftCanvas").drawImage({
     			layer: true,
-    			source: leftImg,
+    			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
     			y: 0,
     			fromCenter: false,
@@ -54,14 +55,14 @@
     		rightCanvas.height = rightImg.height * scale;
     		$("#rightCanvas").drawImage({
     			layer: true,
-    			source: rightImg,
+    			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg",
     			x: 0,
     			y: 0,
     			fromCenter: false,
     			width: rightCanvas.width,
     			height: rightCanvas.height,
     			click: function(layer) {
-    				$("#leftCanvas").drawLine({
+    				$("#rightCanvas").drawLine({
     					layer: true,
     					fillStyle: "black",
     				  	strokeStyle: "#000",
@@ -69,7 +70,7 @@
     				  	x1: layer.mouseX - 5, y1: layer.mouseY,
     				  	x2: layer.mouseX + 5, y2: layer.mouseY
     				});
-    				$("#leftCanvas").drawLine({
+    				$("#rightCanvas").drawLine({
     					layer: true,
     					fillStyle: "black",
     				  	strokeStyle: "#000",
