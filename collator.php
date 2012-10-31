@@ -29,11 +29,11 @@
     			width: leftCanvas.width,
     			height: leftCanvas.height,
     			click: function(layer) {
-    				var originalX = mouseX / scale;
-    				var originalY = mouseY / scale;
+    				var originalX = layer.mouseX / scale;
+    				var originalY = layer.mouseY / scale;
     				var point = new Object();
-    				point.x = mouseX / scale;
-    				point.y = mouseY / scale;
+    				point.x = layer.mouseX / scale;
+    				point.y = layer.mouseY / scale;
     				leftLandmarks[leftLandmarks.length] = point;
     				alert(originalX + ", " + originalY);
     				$("#leftCanvas").drawLine({
@@ -70,8 +70,8 @@
     			height: rightCanvas.height,
     			click: function(layer) {
 	    			var point = new Object();
-	    			point.x = mouseX / scale;
-	    			point.y = mouseY / scale;
+	    			point.x = layer.mouseX / scale;
+	    			point.y = layer.mouseY / scale;
 	    			rightLandmarks[rightLandmarks.length] = point;
     				$("#rightCanvas").drawLine({
     					layer: true,
