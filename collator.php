@@ -68,9 +68,8 @@
 
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
-		alert(document.clientWidth);
     	leftImg.onload = function() {
-    		leftCanvas.width = window.outerWidth;
+    		leftCanvas.width = window.innerWidth;
     		var scale = leftCanvas.width / leftImage.width;
     		leftCanvas.height = leftImage.height * scale;
     		$("#leftCanvas").drawImage({
@@ -111,6 +110,14 @@
     	};
     };
 	</script>
+
+	<style>
+	html, body {
+	  width:  100%;
+	  height: 100%;
+	  margin: 0px;
+	}
+	</style>
 </head>
 <body>
 	<canvas id="leftCanvas"
