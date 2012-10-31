@@ -64,11 +64,11 @@
 		var rightCanvas = document.getElementById("rightCanvas");
 		lCtx = leftCanvas.getContext("2d");
 		rCtx = rightCanvas.getContext("2d");
-		leftCanvas.addEventListener("click", leftCanvasClick, false);
 		rightCanvas.addEventListener("click", rightCanvasClick, false);
 
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
+		alert(leftImg.height);
     	leftImg.onload = function() {
     		$("#leftCanvas").drawImage({
     			layer: true,
@@ -77,13 +77,13 @@
     			y: 0,
     			scale: 1,
     			click: function(layer) {
-    				$("canvas").drawLine({
+    				$("#leftCanvas").drawLine({
     				  strokeStyle: "#000",
     				  strokeWidth: 1,
     				  x1: layer.mouseX - 5, y1: layer.mouseY,
     				  x2: layer.mouseX + 5, y2: layer.mouseY
     				});
-    				$("canvas").drawLine({
+    				$("#leftCanvas").drawLine({
     				  strokeStyle: "#000",
     				  strokeWidth: 1,
     				  x1: layer.mouseX, y1: layer.mouseY - 5,
@@ -91,6 +91,7 @@
     				});
     			 }
     		});
+
     	};
 
 		var rightImg = new Image();
