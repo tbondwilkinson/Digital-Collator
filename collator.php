@@ -75,6 +75,8 @@
     			x: 0,
     			y: 0,
     			fromCenter: false,
+    			width: leftCanvas.width,
+    			height: leftCanvas.height,
     			click: function(layer) {
     				$("#leftCanvas").drawLine({
     					layer: true,
