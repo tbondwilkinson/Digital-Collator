@@ -70,6 +70,9 @@
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
 		alert(document.clientWidth);
     	leftImg.onload = function() {
+    		leftCanvas.width = window.outerWidth;
+    		var scale = leftCanvas.width / leftImage.width;
+    		leftCanvas.height = leftImage.height * scale;
     		$("#leftCanvas").drawImage({
     			layer: true,
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
@@ -110,7 +113,7 @@
 	</script>
 </head>
 <body>
-	<canvas id="leftCanvas" width="2000" height="1400"
+	<canvas id="leftCanvas"
 	style="border:1px solid #000000; float: left">
 	Your browser does not support the HTML5 canvas tag
 	</canvas>
