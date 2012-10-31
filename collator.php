@@ -68,9 +68,9 @@
 
 		var leftImg = new Image();
 		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
-		$("#leftCanvas").width(leftImg.width);
-		$("#leftCanvas").height(leftImg.height);
     	leftImg.onload = function() {
+    		alert(leftImg.width);
+    		alert(leftImg.height);
     		$("#leftCanvas").drawImage({
     			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
     			x: 0,
