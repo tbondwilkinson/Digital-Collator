@@ -35,6 +35,7 @@
     				point.x = layer.mouseX / scale;
     				point.y = layer.mouseY / scale;
     				leftLandmarks[leftLandmarks.length] = point;
+    				alert(layer.mouseX + ", " + layer.mouseY);
     				alert(originalX + ", " + originalY);
     				$("#leftCanvas").drawLine({
     					layer: true,
