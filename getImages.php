@@ -8,7 +8,7 @@ $images = array("folder" => $_GET['folder']);
 $imageSrcs = array();
 
 foreach($dir as $value) {
-	if (preg_match("/jpg$/i", subject)) {
+	if (preg_match("/jpg$/i", $value)) {
 		$imagesSrcs[] = $value;
 	}
 }
