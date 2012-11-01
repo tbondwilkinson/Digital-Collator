@@ -7,22 +7,58 @@
 	<script src="jcanvas.min.js"></script>
 
 	<script type='text/javascript'>
+	var leftFolder = "../SC179_BoD_1";
+	var rightFolder = "../SC179_HRH_1";
 	var leftLandmarks = new Array();
 	var rightLandamrks = new Array();
 
-	window.onload = function() {
-		var leftCanvas = document.getElementById("leftCanvas");
-		var rightCanvas = document.getElementById("rightCanvas");
+	var leftImages = new Array();
+	var rightImages = new Array();
+
+	function getLeftImagesCallback(event) {
+		"use strict";
+
+		if (event.target.responseText === "") {
+			return;
+		}
+
+		var json = JSON.parse(event.target.responseText);
+
+		jQuery.each(json, function () {
+			leftImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
+						+ json.folder + this.src);
+		});
+	}
+
+	function getRightImagesCallback(event) {
+		"use strict";
+
+		if (event.target.responseText === "") {
+			return;
+		}
+
+		var json = JSON.parse(event.target.responseText);
+
+		jQuery.each(json.images, function () {
+			rightImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
+						+ json.folder + this.src);
+		});
+	}
+
+	function nextImage(event) {
+		
+
+		$("#leftCanvas").clearCanvas();
+		$("#rightCanvas").clearCanvas();
 
 		var leftImg = new Image();
-		leftImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg";
+		leftImg.src = leftFolder + leftImages.pop();
     	leftImg.onload = function() {
-    		leftCanvas.width = window.innerWidth/2 - 2;
     		var scale = leftCanvas.width / leftImg.width;
     		leftCanvas.height = leftImg.height * scale;
     		$("#leftCanvas").drawImage({
     			layer: true,
-    			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_BoD_1/SC179_Bod_1_A1.jpg",
+    			source: leftImg.src,
     			x: 0,
     			y: 0,
     			fromCenter: false,
@@ -33,8 +69,6 @@
     				point.x = Number(Math.round(layer.mouseX / scale));
     				point.y = Number(Math.round(layer.mouseY / scale));
     				leftLandmarks[leftLandmarks.length] = point;
-    				alert(layer.mouseX + ", " + layer.mouseY);
-    				alert(point);
     				$("#leftCanvas").drawLine({
     					layer: true,
     				  	strokeStyle: "red",
@@ -54,14 +88,14 @@
     	};
 
 		var rightImg = new Image();
-		rightImg.src = "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg";
+		rightImg.src = rightFolder + rightImages.pop();
     	rightImg.onload = function() {	
 			rightCanvas.width = window.innerWidth/2 - 2;
     		var scale = rightCanvas.width / rightImg.width;
     		rightCanvas.height = rightImg.height * scale;
     		$("#rightCanvas").drawImage({
     			layer: true,
-    			source: "http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/SC179_HRH_1/SC179_HRH_1_A1.jpg",
+    			source: rightImg.src,
     			x: 0,
     			y: 0,
     			fromCenter: false,
@@ -89,6 +123,102 @@
     			 }
     		});
     	};
+	}
+
+	window.onload = function() {
+		// Get the list of images that we will be landmarking from the server.
+		xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", "getImages.php?folder=" + leftFolder);
+		xmlHttp.addEventListener("load", getLeftImagesCallback, false);
+		xmlHttp.send(null);
+
+		xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", "getImages.php?folder=" + rightFolder);
+		xmlHttp.addEventListener("load", getRightImagesCallback, false);
+		xmlHttp.send(null);
+
+
+		var leftCanvas = document.getElementById("leftCanvas");
+		var rightCanvas = document.getElementById("rightCanvas");
+
+		// Display the first images on the two canvases.  Upon clicks, load the next image.
+		// Once all of the images have been landmarked, send an ajax request to the server with
+		// the landmark files.
+		var leftImg = new Image();
+		leftImg.src = leftFolder + leftImages.pop();
+    	leftImg.onload = function() {
+    		leftCanvas.width = window.innerWidth/2 - 2;
+    		var scale = leftCanvas.width / leftImg.width;
+    		leftCanvas.height = leftImg.height * scale;
+    		$("#leftCanvas").drawImage({
+    			layer: true,
+    			source: leftImg.src,
+    			x: 0,
+    			y: 0,
+    			fromCenter: false,
+    			width: leftCanvas.width,
+    			height: leftCanvas.height,
+    			click: function(layer) {
+    				var point = new Object();
+    				point.x = Number(Math.round(layer.mouseX / scale));
+    				point.y = Number(Math.round(layer.mouseY / scale));
+    				leftLandmarks[leftLandmarks.length] = point;
+    				$("#leftCanvas").drawLine({
+    					layer: true,
+    				  	strokeStyle: "red",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
+    				  	x2: layer.mouseX + 5, y2: layer.mouseY
+    				});
+    				$("#leftCanvas").drawLine({
+    					layer: true,
+    				  	strokeStyle: "red",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
+    				  	x2: layer.mouseX, y2: layer.mouseY + 5
+    				});
+    			 }
+    		});
+    	};
+
+		var rightImg = new Image();
+		rightImg.src = rightFolder + rightImages.pop();
+    	rightImg.onload = function() {	
+			rightCanvas.width = window.innerWidth/2 - 2;
+    		var scale = rightCanvas.width / rightImg.width;
+    		rightCanvas.height = rightImg.height * scale;
+    		$("#rightCanvas").drawImage({
+    			layer: true,
+    			source: rightImg.src,
+    			x: 0,
+    			y: 0,
+    			fromCenter: false,
+    			width: rightCanvas.width,
+    			height: rightCanvas.height,
+    			click: function(layer) {
+	    			var point = new Object();
+	    			point.x = Number(Math.round(layer.mouseX / scale));
+	    			point.y = Number(Math.round(layer.mouseY / scale));
+	    			rightLandmarks[rightLandmarks.length] = point;
+    				$("#rightCanvas").drawLine({
+    					layer: true,
+    				  	strokeStyle: "red",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
+    				  	x2: layer.mouseX + 5, y2: layer.mouseY
+    				});
+    				$("#rightCanvas").drawLine({
+    					layer: true,
+    				  	strokeStyle: "red",
+    				  	strokeWidth: 1,
+    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
+    				  	x2: layer.mouseX, y2: layer.mouseY + 5
+    				});
+    			 }
+    		});
+    	};
+
+    	document.onkeypress(nextImage);
     };
 	</script>
 
