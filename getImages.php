@@ -9,7 +9,7 @@ $imageSrcs = array();
 
 foreach($dir as $value) {
 	echo $value;
-	if (preg_match("jpg$", $value)) {
+	if (preg_match("/\.jpg$/i", $value)) {
 		$imagesSrcs[] = $value;
 	}
 }
