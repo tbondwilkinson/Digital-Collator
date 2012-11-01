@@ -26,7 +26,7 @@
 
 		jQuery.each(json.images, function () {
 			leftImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
-						+ json.folder + this.src);
+						+ json.folder + this);
 		});
 
 		var leftCanvas = document.getElementById("leftCanvas");
@@ -79,7 +79,7 @@
 
 		jQuery.each(json.images, function () {
 			rightImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
-						+ json.folder + this.src);
+						+ json.folder + this);
 		});
 
 		var rightCanvas = document.getElementById("rightCanvas");
