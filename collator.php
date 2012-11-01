@@ -7,8 +7,8 @@
 	<script src="jcanvas.min.js"></script>
 
 	<script type='text/javascript'>
-	var leftFolder = "../SC179_BoD_1";
-	var rightFolder = "../SC179_HRH_1";
+	var leftFolder = "SC179_BoD_1/";
+	var rightFolder = "SC179_HRH_1/";
 	var leftLandmarks = new Array();
 	var rightLandamrks = new Array();
 
@@ -25,8 +25,7 @@
 		var json = JSON.parse(event.target.responseText);
 
 		jQuery.each(json.images, function () {
-			leftImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
-						+ json.folder + this);
+			leftImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/" + leftFolder + this);
 		});
 
 		var leftCanvas = document.getElementById("leftCanvas");
@@ -79,7 +78,7 @@
 
 		jQuery.each(json.images, function () {
 			rightImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
-						+ json.folder + this);
+						+ rightFolder + this);
 		});
 
 		var rightCanvas = document.getElementById("rightCanvas");
@@ -123,7 +122,9 @@
 	}
 
 	function nextImage(event) {
-
+		if (event.keyCode !== 39) {
+			return true;
+		}
 
 		$("#leftCanvas").clearCanvas();
 		$("#rightCanvas").clearCanvas();
@@ -200,17 +201,19 @@
     			 }
     		});
     	};
+
+    	return false;
 	}
 
 	window.onload = function() {
 		// Get the list of images that we will be landmarking from the server.
 		xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", "getImages.php?folder=" + leftFolder);
+		xmlHttp.open("GET", "getImages.php?folder=../" + leftFolder);
 		xmlHttp.addEventListener("load", getLeftImagesCallback, false);
 		xmlHttp.send(null);
 
 		xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", "getImages.php?folder=" + rightFolder);
+		xmlHttp.open("GET", "getImages.php?folder=../" + rightFolder);
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
