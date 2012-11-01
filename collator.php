@@ -217,7 +217,7 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
-    	document.onkeypress(nextImage);
+    	document.onkeypress = nextImage;
     };
 	</script>
 
