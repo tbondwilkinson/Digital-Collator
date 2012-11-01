@@ -10,7 +10,7 @@ $imageSrcs = array();
 foreach($dir as $value) {
 	echo $value;
 	if (preg_match("/\.jpg$/i", $value)) {
-		array_push($imgSrcs, $value);
+		array_push($imageSrcs, $value);
 		echo "WE FOUND A MATCH!!!";
 	}
 }
