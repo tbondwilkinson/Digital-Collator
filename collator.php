@@ -10,7 +10,7 @@
 	var leftFolder = "SC179_BoD_1/";
 	var rightFolder = "SC179_HRH_1/";
 	var leftLandmarks = new Array();
-	var rightLandamrks = new Array();
+	var rightLandmarks = new Array();
 
 	var leftImages = new Array();
 	var rightImages = new Array();
@@ -218,7 +218,7 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
-    	window.onkeypress = nextImage;
+		$("document").keypress(nextImage);
     };
 	</script>
 
