@@ -5,7 +5,7 @@ $dir = scandir($_GET['folder']);
 
 $images = array("folder" => $_GET['folder']);
 
-$imageSrcs = arary();
+$imageSrcs = array();
 
 foreach($dir as $value) {
 	if (preg_match("/jpg$/i", subject)) {
