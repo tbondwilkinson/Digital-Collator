@@ -219,7 +219,8 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
-		$("document").keypress(nextImage);
+		$("#leftCanvas").keypress(nextImage);
+		$("#rightCanvas").keypress(nextImage);
     };
 	</script>
 
