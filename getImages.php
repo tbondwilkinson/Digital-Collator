@@ -8,9 +8,10 @@ $images = array("folder" => $_GET['folder']);
 $imageSrcs = array();
 
 foreach($dir as $value) {
-	echo $value;
+	echo $value + "\n";
 	if (preg_match("/\.jpg$/i", $value)) {
 		$imagesSrcs[] = $value;
+		echo "WE FOUND A MATCH!!!";
 	}
 }
 
