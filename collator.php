@@ -24,7 +24,7 @@
 
 		var json = JSON.parse(event.target.responseText);
 
-		jQuery.each(json, function () {
+		jQuery.each(json.images, function () {
 			leftImages.push("http://ec2-54-245-10-30.us-west-2.compute.amazonaws.com/~tbondwilkinson/"
 						+ json.folder + this.src);
 		});
