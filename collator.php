@@ -122,6 +122,7 @@
 	}
 
 	function nextImage(event) {
+		alert(event.keyCode);
 		if (event.keyCode !== 39) {
 			return true;
 		}
