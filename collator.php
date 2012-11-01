@@ -31,7 +31,7 @@
 
 		var leftCanvas = document.getElementById("leftCanvas");
 		var leftImg = new Image();
-		leftImg.src = leftFolder + leftImages.pop();
+		leftImg.src = leftImages.pop();
     	leftImg.onload = function() {
     		leftCanvas.width = window.innerWidth/2 - 2;
     		var scale = leftCanvas.width / leftImg.width;
@@ -85,7 +85,7 @@
 		var rightCanvas = document.getElementById("rightCanvas");
 
 		var rightImg = new Image();
-		rightImg.src = rightFolder + rightImages.pop();
+		rightImg.src = rightImages.pop();
     	rightImg.onload = function() {	
 			rightCanvas.width = window.innerWidth/2 - 2;
     		var scale = rightCanvas.width / rightImg.width;
