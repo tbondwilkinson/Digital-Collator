@@ -9,7 +9,7 @@ for($i = 0; $i < count($leftLandmarks); $i++) {
 	if (empty($leftLandmarks[$i])) {
 		continue;
 	}
-	$scanName = "landmarkFiles/" . substr_replace($leftLandmarks[$i][0]->name, "txt", -3, 0);
+	$scanName = "landmarkFiles/" . substr_replace($leftLandmarks[$i][0]->name, "txt", -3);
 	$file = fopen($scanName, 'w') or die("Cannot open file");
 	$topOfFile = "Index\txSource\tySource\txTarget\tyTarget\n";
 	fwrite($file, $topOfFile);
