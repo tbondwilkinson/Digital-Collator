@@ -118,6 +118,11 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
+		leftCanvas = document.getElementById("leftCanvas");
+		leftCanvas.width = window.innerWidth/2 - 2;
+		rightCanvas = document.getElementById("rightCanvas");
+		rightCanvas.width = window.innerWidth/2 - 2;
+
 		if ($.browser.mozilla) {
 		    $(document).keypress(nextImage);
 		} else {
