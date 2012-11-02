@@ -101,7 +101,7 @@
 	    				  	x2: layer.mouseX, y2: layer.mouseY + 5
 	    				});
     				}
-    				leftTurn != leftTurn;
+    				leftTurn = !leftTurn;
     			}
     		});
     	};
