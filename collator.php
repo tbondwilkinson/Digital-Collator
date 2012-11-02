@@ -12,8 +12,8 @@
 	var leftLandmarks = new Array();
 	var rightLandmarks = new Array();
 
-	var leftImages = new Array();
-	var rightImages = new Array();
+	var leftImages = new Array(new Array());
+	var rightImages = new Array(new Array());
 	var leftCanvas;
 	var rightCanvas;
 
@@ -70,10 +70,9 @@
     			height: canvas.height,
     			click: function(layer) {
     				var point = new Object();
-    				point.name = img.src.substring(img.src.lastIndexOf("/"));
     				point.x = Number(Math.round(layer.mouseX / scale));
     				point.y = Number(Math.round(layer.mouseY / scale));
-    				landmarksArray.push(point);
+    				landmarksArray[img.src.substring(img.src.lastIndexOf("/") + 1)].push(point);
     				jcanvas.drawLine({
     					layer: true,
     				  	strokeStyle: "red",
@@ -103,6 +102,9 @@
 
 		drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks);
 		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
+
+		leftLandmarks.push(new Array());
+		rightLandmarks.push(new Array());
 
     	return false;
 	}
