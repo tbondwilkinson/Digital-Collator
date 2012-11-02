@@ -113,8 +113,8 @@
 			return true;
 		}
 
-		$("$leftCanvas").removeLayers();
-		$("$rightCanvas").removeLayers();
+		$("#leftCanvas").removeLayers();
+		$("#rightCanvas").removeLayers();
 
 		if(drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks, true)) {
 			drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks, false);
