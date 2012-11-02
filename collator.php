@@ -54,8 +54,15 @@
 		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
 	}
 
+	function finishLandmarks(landmarksArray) {
+		$.post("finishLandmarks.php", JSON.stringify(landmarksArray));
+	}
+
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
 		var img = new Image();
+		if (imageArray.length == 0) {
+			finishLandmarks(landmarksArray);
+		}
 		img.src = imageArray.pop();
 		landmarksArray.push(new Array());
     	img.onload = function() {

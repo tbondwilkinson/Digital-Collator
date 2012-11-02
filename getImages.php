@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $dir = scandir($_GET['folder']);
 
