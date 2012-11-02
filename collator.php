@@ -57,7 +57,7 @@
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
 		var img = new Image();
 		img.src = imageArray.pop();
-    	leftImg.onload = function() {
+    	img.onload = function() {
     		var scale = canvas.width / img.width;
     		canvas.height = img.height * scale;
     		jcanvas.drawImage({
