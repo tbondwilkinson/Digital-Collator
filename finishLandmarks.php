@@ -6,7 +6,7 @@ $rightLandmarks = json_decode($_POST['rightLandmarks']);
 print_r($leftLandmarks);
 
 for($i = 0; $i < count($leftLandmarks); $i++) {
-	$scanName = $leftLandmarks[$i][0]->name;
+	$scanName = "landmarkFiles/" . substr_replace($leftLandmarks[$i][0]->name, ".txt", -4, -1);
 	$file = fopen($scanName, 'w') or die("Cannot open file");
 	$topOfFile = "Index\txSource\tySource\txTarget\tyTarget";
 	fwrite($file, $topOfFile);
