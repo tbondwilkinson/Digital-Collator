@@ -14,7 +14,7 @@ for($i = 0; $i < count($leftLandmarks); $i++) {
 	$topOfFile = "Index\txSource\tySource\txTarget\tyTarget\n";
 	fwrite($file, $topOfFile);
 	for ($j = 0; $j < count($leftLandmarks[$i]); $j++) {
-		$landmark = $j . "\t" . $leftLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . 
+		$landmark = "" . $j . "\t" . $leftLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . 
 			"\t" . $rightLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . "\n";
 		fwrite($file, $landmark);
 		fclose($file);
