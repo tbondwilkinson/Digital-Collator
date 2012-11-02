@@ -3,8 +3,6 @@
 $leftLandmarks = json_decode($_POST['leftLandmarks']);
 $rightLandmarks = json_decode($_POST['rightLandmarks']);
 
-print_r($leftLandmarks);
-
 for($i = 0; $i < count($leftLandmarks); $i++) {
 	if (empty($leftLandmarks[$i])) {
 		continue;
@@ -15,7 +13,7 @@ for($i = 0; $i < count($leftLandmarks); $i++) {
 	fwrite($file, $topOfFile);
 	for ($j = 0; $j < count($leftLandmarks[$i]); $j++) {
 		$landmark = "" . $j . "\t" . $leftLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . 
-			"\t" . $rightLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . "\n";
+			"\t" . $rightLandmarks[$i][$j]->x . "\t" . $rightLandmarks[$i][$j]->y . "\n";
 		fwrite($file, $landmark);
 	}
 	fclose($file);
