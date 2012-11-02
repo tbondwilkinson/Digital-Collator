@@ -57,7 +57,7 @@
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
 		var img = new Image();
 		img.src = imageArray.pop();
-		landmarksArray[img.src.substring(img.src.lastIndexOf("/") + 1)] = new Array();
+		landmarksArray.push(new Array());
     	img.onload = function() {
     		var scale = canvas.width / img.width;
     		canvas.height = img.height * scale;
@@ -71,9 +71,10 @@
     			height: canvas.height,
     			click: function(layer) {
     				var point = new Object();
+    				point.name = img.src.substring(img.src.lastIndexOf("/") + 1);
     				point.x = Number(Math.round(layer.mouseX / scale));
     				point.y = Number(Math.round(layer.mouseY / scale));
-    				landmarksArray[img.src.substring(img.src.lastIndexOf("/") + 1)].push(point);
+    				landmarksArray[landmarksArray.length - 1].push(point);
     				jcanvas.drawLine({
     					layer: true,
     				  	strokeStyle: "red",
