@@ -17,8 +17,8 @@ for($i = 0; $i < count($leftLandmarks); $i++) {
 		$landmark = "" . $j . "\t" . $leftLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . 
 			"\t" . $rightLandmarks[$i][$j]->x . "\t" . $leftLandmarks[$i][$j]->y . "\n";
 		fwrite($file, $landmark);
-		fclose($file);
 	}
+	fclose($file);
 }
 
 exit;
