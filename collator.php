@@ -54,14 +54,15 @@
 		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
 	}
 
-	function finishLandmarks(landmarksArray) {
-		$.post("finishLandmarks.php", {"landmarks": JSON.stringify(landmarksArray)});
+	function finishLandmarks() {
+		$.post("finishLandmarks.php", {"leftLandmarks": JSON.stringify(leftLandmarks), "rightLandmarks": JSON.stringify(rightLandmarks)});
 	}
 
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
 		var img = new Image();
 		if (imageArray.length == 0) {
-			finishLandmarks(landmarksArray);
+			finishLandmarks();
+			return false;
 		}
 		img.src = imageArray.pop();
 		landmarksArray.push(new Array());
@@ -99,6 +100,7 @@
     			 }
     		});
     	};
+    	return true;
 	}
 
 	var nextImage = function(event) {
@@ -109,8 +111,9 @@
 		$("#leftCanvas").clearCanvas();
 		$("#rightCanvas").clearCanvas();
 
-		drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks);
-		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
+		if(drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks)) {
+			drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
+		}
 
     	return false;
 	}
