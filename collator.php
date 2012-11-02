@@ -121,7 +121,7 @@
     	};
 	}
 
-	function nextImage(event) {
+	var nextImage = function(event) {
 		alert("Next image!");
 		alert(event.keyCode);
 		if (event.keyCode !== 39) {
@@ -219,7 +219,7 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
-		$(document).keydown(function(event) {
+		$(document).keypress(function(event) {
 		 alert('You pressed '+event.keyCode);
 		 event.preventDefault();
 		});
