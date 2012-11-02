@@ -70,6 +70,7 @@
     			height: canvas.height,
     			click: function(layer) {
     				var point = new Object();
+    				point.name = img.src.substring(img.src.lastIndexOf("/"));
     				point.x = Number(Math.round(layer.mouseX / scale));
     				point.y = Number(Math.round(layer.mouseY / scale));
     				landmarksArray.push(point);
