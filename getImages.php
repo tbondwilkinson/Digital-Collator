@@ -13,7 +13,7 @@ foreach($dir as $value) {
 	}
 }
 
-$images["images"] = $imageSrcs;
+$images["images"] = array_reverse($imageSrcs);
 
 echo json_encode($images);
 
