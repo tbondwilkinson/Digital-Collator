@@ -55,7 +55,7 @@
 	}
 
 	function finishLandmarks(landmarksArray) {
-		$.post("finishLandmarks.php", landmarksArray.serialize());
+		$.post("finishLandmarks.php", $.param(landmarksArray));
 	}
 
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
