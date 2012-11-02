@@ -131,7 +131,7 @@
 		$("#rightCanvas").clearCanvas();
 
 		var leftImg = new Image();
-		leftImg.src = leftFolder + leftImages.pop();
+		leftImg.src = leftImages.pop();
     	leftImg.onload = function() {
     		var scale = leftCanvas.width / leftImg.width;
     		leftCanvas.height = leftImg.height * scale;
@@ -167,7 +167,7 @@
     	};
 
 		var rightImg = new Image();
-		rightImg.src = rightFolder + rightImages.pop();
+		rightImg.src = rightImages.pop();
     	rightImg.onload = function() {	
 			rightCanvas.width = window.innerWidth/2 - 2;
     		var scale = rightCanvas.width / rightImg.width;
