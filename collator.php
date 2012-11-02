@@ -109,7 +109,7 @@
 	}
 
 	var nextImage = function(event) {
-		if (event.keyCode !== 39 || !leftClick) {
+		if (event.keyCode !== 39 || !leftTurn) {
 			return true;
 		}
 
