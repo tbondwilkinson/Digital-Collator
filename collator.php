@@ -58,6 +58,8 @@
 		$.post("finishLandmarks.php", {"leftLandmarks": JSON.stringify(leftLandmarks), "rightLandmarks": JSON.stringify(rightLandmarks)});
 	}
 
+	var leftTurn = true;
+
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray, leftClick) {
 		var img = new Image();
 		if (imageArray.length == 0) {
@@ -67,7 +69,6 @@
 		img.src = imageArray.pop();
 		landmarksArray.push(new Array());
     	img.onload = function() {
-    		var leftTurn = true;
     		var scale = canvas.width / img.width;
     		canvas.height = img.height * scale;
     		jcanvas.drawImage({
