@@ -32,7 +32,7 @@
 
 		leftCanvas = document.getElementById("leftCanvas");
 		
-		drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks);
+		drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks, true);
 	}
 
 	function getRightImagesCallback(event) {
@@ -51,14 +51,14 @@
 
 		rightCanvas = document.getElementById("rightCanvas");
 
-		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
+		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks, false);
 	}
 
 	function finishLandmarks() {
 		$.post("finishLandmarks.php", {"leftLandmarks": JSON.stringify(leftLandmarks), "rightLandmarks": JSON.stringify(rightLandmarks)});
 	}
 
-	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
+	function drawImages(jcanvas, canvas, imageArray, landmarksArray, leftClick) {
 		var img = new Image();
 		if (imageArray.length == 0) {
 			finishLandmarks();
@@ -67,6 +67,7 @@
 		img.src = imageArray.pop();
 		landmarksArray.push(new Array());
     	img.onload = function() {
+    		var leftTurn = true;
     		var scale = canvas.width / img.width;
     		canvas.height = img.height * scale;
     		jcanvas.drawImage({
@@ -78,26 +79,29 @@
     			width: canvas.width,
     			height: canvas.height,
     			click: function(layer) {
-    				var point = new Object();
-    				point.name = img.src.substring(img.src.lastIndexOf("/") + 1);
-    				point.x = Number(Math.round(layer.mouseX / scale));
-    				point.y = Number(Math.round(layer.mouseY / scale));
-    				landmarksArray[landmarksArray.length - 1].push(point);
-    				jcanvas.drawLine({
-    					layer: true,
-    				  	strokeStyle: "red",
-    				  	strokeWidth: 1,
-    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
-    				  	x2: layer.mouseX + 5, y2: layer.mouseY
-    				});
-    				jcanvas.drawLine({
-    					layer: true,
-    				  	strokeStyle: "red",
-    				  	strokeWidth: 1,
-    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
-    				  	x2: layer.mouseX, y2: layer.mouseY + 5
-    				});
-    			 }
+    				if (leftClick && leftTurn || !leftClick && !leftTurn) {
+	    				var point = new Object();
+	    				point.name = img.src.substring(img.src.lastIndexOf("/") + 1);
+	    				point.x = Number(Math.round(layer.mouseX / scale));
+	    				point.y = Number(Math.round(layer.mouseY / scale));
+	    				landmarksArray[landmarksArray.length - 1].push(point);
+	    				jcanvas.drawLine({
+	    					layer: true,
+	    				  	strokeStyle: "red",
+	    				  	strokeWidth: 1,
+	    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
+	    				  	x2: layer.mouseX + 5, y2: layer.mouseY
+	    				});
+	    				jcanvas.drawLine({
+	    					layer: true,
+	    				  	strokeStyle: "red",
+	    				  	strokeWidth: 1,
+	    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
+	    				  	x2: layer.mouseX, y2: layer.mouseY + 5
+	    				});
+    				}
+    				leftTurn != leftTurn;
+    			}
     		});
     	};
     	return true;
@@ -111,8 +115,8 @@
 		$("#leftCanvas").clearCanvas();
 		$("#rightCanvas").clearCanvas();
 
-		if(drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks)) {
-			drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
+		if(drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks, true)) {
+			drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks, false);
 		}
 
     	return false;
