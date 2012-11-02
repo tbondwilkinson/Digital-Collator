@@ -122,7 +122,6 @@
 	}
 
 	var nextImage = function(event) {
-		alert("Next image!");
 		alert(event.keyCode);
 		if (event.keyCode !== 39) {
 			return true;
@@ -219,10 +218,11 @@
 		xmlHttp.addEventListener("load", getRightImagesCallback, false);
 		xmlHttp.send(null);
 
-		$(document).keypress(function(event) {
-		 alert('You pressed '+event.keyCode);
-		 event.preventDefault();
-		});
+		if ($.browser.mozilla) {
+		    $(document).keypress (nextImage);
+		} else {
+		    $(document).keydown (nextImage);
+		}
     };
 	</script>
 
