@@ -12,8 +12,8 @@
 	var leftLandmarks = new Array();
 	var rightLandmarks = new Array();
 
-	var leftImages = new Array(new Array());
-	var rightImages = new Array(new Array());
+	var leftImages = new Array();
+	var rightImages = new Array();
 	var leftCanvas;
 	var rightCanvas;
 
@@ -57,6 +57,7 @@
 	function drawImages(jcanvas, canvas, imageArray, landmarksArray) {
 		var img = new Image();
 		img.src = imageArray.pop();
+		landMarksArray[img.src.substring(img.src.lastIndexOf("/") + 1)] = new Array();
     	img.onload = function() {
     		var scale = canvas.width / img.width;
     		canvas.height = img.height * scale;
@@ -102,9 +103,6 @@
 
 		drawImages($("#leftCanvas"), leftCanvas, leftImages, leftLandmarks);
 		drawImages($("#rightCanvas"), rightCanvas, rightImages, rightLandmarks);
-
-		leftLandmarks.push(new Array());
-		rightLandmarks.push(new Array());
 
     	return false;
 	}
