@@ -81,24 +81,22 @@
     			height: canvas.height,
     			click: function(layer) {
     				if (leftClick && leftTurn || !leftClick && !leftTurn) {
+    					jcanvas.setLayer(landmarksArray.length, {draggable: false});
 	    				var point = new Object();
 	    				point.name = img.src.substring(img.src.lastIndexOf("/") + 1);
 	    				point.x = Number(Math.round(layer.mouseX / scale));
 	    				point.y = Number(Math.round(layer.mouseY / scale));
 	    				landmarksArray[landmarksArray.length - 1].push(point);
-	    				jcanvas.drawLine({
+
+	    				jcanvas.drawEllipse({
 	    					layer: true,
-	    				  	strokeStyle: "red",
-	    				  	strokeWidth: 1,
-	    				  	x1: layer.mouseX - 5, y1: layer.mouseY,
-	    				  	x2: layer.mouseX + 5, y2: layer.mouseY
-	    				});
-	    				jcanvas.drawLine({
-	    					layer: true,
-	    				  	strokeStyle: "red",
-	    				  	strokeWidth: 1,
-	    				  	x1: layer.mouseX, y1: layer.mouseY - 5,
-	    				  	x2: layer.mouseX, y2: layer.mouseY + 5
+	    					name: landmarksArray.length,
+	    					draggable: true,
+	    				  	fillStyle: "red",
+	    				  	x: layer.mouseX, 
+	    				  	y: layer.mouseY,
+	    				  	width: 10,
+	    				  	height: 10
 	    				});
 	    				leftTurn = !leftTurn;
     				}
